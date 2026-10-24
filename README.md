@@ -24,12 +24,31 @@ X11/XInput (global key grabs, multi-pointer), which macOS doesn't have.
 - Launch at login
 - No Accessibility permission needed
 
+## Download
+
+Get `Spidolin-<version>.zip` from the
+[Releases page](https://github.com/saidfauzul/spidolin/releases/latest), unzip it and
+drag `Spidolin.app` into `/Applications` (or `~/Applications`). It is a universal app
+for macOS 13 or later on Apple Silicon and Intel Macs.
+
+Spidolin is ad-hoc signed, not notarized by Apple, so macOS blocks it the first time
+you open it. To allow it, do one of these once:
+
+- Right-click `Spidolin.app` and choose Open, then Open again; or
+- Try to open it, then go to System Settings > Privacy & Security and click
+  "Open Anyway" (on macOS 15 and later this is the only way through Finder); or
+- In the Terminal, remove the quarantine flag:
+
+  ```bash
+  xattr -dr com.apple.quarantine /Applications/Spidolin.app
+  ```
+
 ## Requirements
 
 - macOS 13 (Ventura) or later
-- Xcode Command Line Tools, to build (`xcode-select --install`)
+- Xcode Command Line Tools, only to build from source (`xcode-select --install`)
 
-## Build and install
+## Build from source
 
 ```bash
 git clone https://github.com/saidfauzul/spidolin.git
@@ -48,8 +67,7 @@ bash build.sh install
 open ~/Applications/Spidolin.app
 ```
 
-The build is ad-hoc signed. If you download a prebuilt copy instead, macOS may
-block it the first time; right-click the app and choose Open.
+`bash build.sh release` builds a universal app and zips it for a release.
 
 ## Usage
 

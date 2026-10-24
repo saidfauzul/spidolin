@@ -25,12 +25,32 @@ yang tidak ada di macOS.
 - Berjalan otomatis saat login
 - Tidak memerlukan izin Accessibility
 
+## Unduh
+
+Unduh `Spidolin-<versi>.zip` dari
+[halaman Releases](https://github.com/saidfauzul/spidolin/releases/latest), ekstrak,
+lalu seret `Spidolin.app` ke `/Applications` (atau `~/Applications`). Aplikasi ini
+universal untuk macOS 13 atau yang lebih baru, di Mac Apple Silicon maupun Intel.
+
+Spidolin ditandatangani secara ad-hoc dan belum dinotarisasi Apple, jadi macOS akan
+memblokirnya saat pertama kali dibuka. Untuk mengizinkannya, lakukan salah satu cara
+berikut sekali saja:
+
+- Klik kanan `Spidolin.app`, pilih Open, lalu pilih Open lagi; atau
+- Coba buka aplikasinya, lalu buka System Settings > Privacy & Security dan klik
+  "Open Anyway" (di macOS 15 ke atas, hanya cara ini yang bisa lewat Finder); atau
+- Di Terminal, hapus tanda karantina:
+
+  ```bash
+  xattr -dr com.apple.quarantine /Applications/Spidolin.app
+  ```
+
 ## Kebutuhan
 
 - macOS 13 (Ventura) atau yang lebih baru
-- Xcode Command Line Tools, untuk build (`xcode-select --install`)
+- Xcode Command Line Tools, hanya untuk build dari kode sumber (`xcode-select --install`)
 
-## Build dan instalasi
+## Build dari kode sumber
 
 ```bash
 git clone https://github.com/saidfauzul/spidolin.git
@@ -49,8 +69,7 @@ bash build.sh install
 open ~/Applications/Spidolin.app
 ```
 
-Hasil build ditandatangani secara ad-hoc. Jika Anda mengunduh versi siap pakai,
-macOS mungkin memblokirnya saat pertama dibuka; klik kanan aplikasinya lalu pilih Open.
+`bash build.sh release` membuat aplikasi universal dan mengemasnya dalam zip untuk rilis.
 
 ## Cara pakai
 
